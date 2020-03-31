@@ -1,0 +1,90 @@
+\section{Subgroups}
+
+\subsection{Definitions and Basics}
+Although we have defined subgroups in section $1$, we repeat the definition here.
+\begin{definition}
+Let $G$ be a group. A subset $H$ of $G$ is a subgroup of $G$ if $H$ is nonempty and it is closed under products and inverses. That is, $x,y\in H$ implies $x^{-1}\in H$ and $xy\in H$. If $H$ is a subgroup of $G$, we write $H\leq G$.
+\end{definition}
+
+If $H\leq G$ and $H\neq G$, we write $H<G$.
+
+\begin{example}
+    $\mathbb{Z}\leq\mathbb{Q}$ and $\mathbb{Q}\leq\mathbb{R}$ under the operation of addition.
+    
+    If $G=D_{2n}$, $H=\{1,r,r^2,\ldots,r^{n-1}\}$ is a subgroup of $G$.
+\end{example}
+
+Note that the relation $\leq$ is transitive. That is, if $K\leq H$ and $H\leq G$, then $K\leq G$.
+
+\begin{theorem}[Subgroup Criterion]
+A subset $H$ of a group $G$ is a subgroup if and only if
+\begin{enumerate}
+    \item $H\neq\emptyset$.
+    \item for all $x,y\in H$, $xy^{-1}\in H$.
+\end{enumerate}
+Further, if $H$ is finite, then it suffices to check that $H$ is nonempty and is closed under multiplication.
+\end{theorem}
+\begin{proof}
+    If $H\leq G$, the two given statements clearly hold as $H$ contains the identity of $G$ and is closed under inverses and multiplication.
+    
+    To prove the converse, let $x$ be any element of $H$ (which exists as $H\neq\emptyset$). We have $xx^{-1}\in H\implies 1\in H$. As $H$ contains $1$, for any element $h$ of $H$, $H$ contains $1h^{-1}=h^{-1}$, that is, it is closed under inverses. For any $x$ and $y$ in $H$, as $y^{-1}\in H$, we have that $x(y^{-1})^{-1}=xy\in H$, that is, $H$ is closed under multiplication.
+    
+    \vspace{1mm}
+    To prove the second part, we see that $x,x^2,x^3,\ldots\in H$ for any $x\in H$. Using \ref{finGrpFinOrd}, we see that $x$ is of finite order $n$. Then $x^{-1}=x^{n-1}\in H$ so $H$ is closed under inverses.
+\end{proof}
+
+\begin{exercise}
+    Let $G$ be a group and $H,K$ be subgroups of $G$. Show that $H\cap K$ is also a subgroup of $G$.
+\end{exercise}
+
+\begin{exercise}
+    Let $G$ be a group and $H,K$ be subgroups of $G$. Show that $H\cup K$ is a subgroup if and only if $H\subseteq K$ or $K\subseteq H$.
+\end{exercise}
+
+\begin{exercise}
+    Let $G$ be a group of order $n>2$. Show that $G$ cannot have a subgroup $H$ of order $n-1$.
+\end{exercise}
+
+\begin{exercise}
+    Let $G$ be a group. Let $H=\{g\in G\mid |g|<\infty\}$. Show that $H\leq G$ if $G$ is abelian. In this case, $H$ is called the \textit{torsion subgroup} of $G$. Give an example where $G$ is non-abelian and $H$ is not a subgroup of $G$.
+\end{exercise}
+
+\begin{exercise}
+    Let $H$ be a subgroup of $\mathbb{Q}$ under addition with the property that $\frac 1x\in H$ for every nonzero $x\in H$. Show that $H=\{0\}$ or $\mathbb{Q}$.
+\end{exercise}
+
+\subsection{Centralizers, Normalizers, Stabilizers and Kernels}
+
+We now introduce some important subgroups.
+
+\begin{definition}
+    Let $G$ be a group and $A$ be any nonempty subset of $A$. Define
+    $$C_G(A)=\{g\in G\mid gag^{-1}=a\text{ for all }a\in A\}.$$
+    This subset is called the \textit{centralizer} of $A$ in $G$.
+\end{definition}
+
+Since $gag^{-1}=g$ if and only if $ga=ag$, $C_G(A)$ is the set of all elements that commute with every element of $A$.
+
+Now observe that $C_G(A)$ is a subgroup of $G$ as first of all, $1\in C_G(A)$ so $C_G(A)\neq\emptyset$, and second of all, if $x,y\in C_G(A)$, we have $xax^{-1}=a$ and $yay^{-1}=a$, that is, $y^{-1}ay=a$ for all $a\in A$. We then have $a=xax^{-1}=x(y^{-1}ay)x^{-1}=(xy^{-1})a(xy^{-1})^{-1}$ so $xy^{-1}\in C_G(A)$. Thus, $C_G(A)\leq G$.
+
+\begin{definition}
+    Let $G$ be a group. Define
+    $$Z(G)=\{g\in G\mid gx=xg\text{ for all }x\in G\}.$$
+    This subset is called the \textit{center} of $G$.
+\end{definition}
+
+$Z(G)$ is the set of all elements that commute with every element of $G$.
+
+As $Z(G)=C_G(G)$, we have $Z(G)\leq G$.
+
+\begin{definition}
+    Let $G$ be a group and $A$ be a subset of $G$. Define $gAg^{-1}=\{gag^{-1}\mid a\in A\}$. Define
+    $$N_G(A)=\{g\in G\mid gAg^{-1}=A\}.$$
+    This set is called the \textit{normalizer} of $A$ in $G$.
+\end{definition}
+
+The proof that $N_G(A)\leq G$ is similar to that we used to prove that $C_G(A)\leq G$.
+
+Note that $C_G(A)\leq N_G(A)$.
+
+\clearpage
