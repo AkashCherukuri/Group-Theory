@@ -126,7 +126,7 @@ $\mathbb{Q}$ is a subgroup of $\mathbb{R}$ under addition.
     If $x$ is an element of infinite order in $G$, prove that $x^n, n\in\mathbb{Z}$ are all distinct. Deduce that if $x^i=x^j$ for some $i,j\in\mathbb{Z}, i\neq j$, $x$ is of finite order.
 \end{exercise}
 \begin{exercise}
-    Let $A,B$ be two groups and let $a\in A, b\in B$. Show that $(a,1)$ and $(1,b)$ commute in $A\times B$. Further show that the order of $(a,b)$ in $A\times B$ is the least common multiple of $|a|$ and $|b|$/
+    Let $A,B$ be two groups and let $a\in A, b\in B$. Show that $(a,1)$ and $(1,b)$ commute in $A\times B$. Further show that the order of $(a,b)$ in $A\times B$ is the least common multiple of $|a|$ and $|b|$.
 \end{exercise}
 \begin{exercise}
     Let $G=\{1,a,b,c\}$ be a group of order $4$. If $G$ has no elements of order $4$, prove that there is a unique group table for $G$. Deduce that $G$ is abelian. This group is called the \textit{Klein four-group}.
@@ -244,6 +244,12 @@ We have the following results (which we shall not prove in these notes).
     \item if $|F|=q<\infty$, then $|GL_n(F)|=(q^n-1)(q^n-q)(q^n-q^2)\cdots(q^n-q^{n-1})$.
 \end{enumerate}
 
+\begin{exercise}
+\label{defOfHeisenbergGrp}
+    Let $F$ be a field. Define $$H(F)=\left\{\begin{pmatrix}1 & a & b \\ 0 & 1 & c \\ 0 & 0 & 1\end{pmatrix}\mathrel{\Bigg|} a,b,c\in F\right\}$$
+    Prove that $H(F)$ is a group under matrix multiplication. This group is called the \textit{Heisenberg group} over $F$.
+\end{exercise}
+
 \subsection{Homomorphisms and Isomorphisms}
 We define homomorphisms and isomorphisms here, but shall discuss them much more in detail later on.
 \begin{definition}
@@ -331,6 +337,7 @@ More precisely, this is called a \textit{left} group action. We have a similar n
 \end{proof}
 
 \begin{definition}
+\label{defKerGrpAc}
     Let a group $G$ act on a set $A$. We define the kernel of the group action as
     $$\{g\in G\mid g\cdot a=a\text{ for all }a\in A\}$$
 \end{definition}
