@@ -132,6 +132,10 @@ $\mathbb{Q}$ is a subgroup of $\mathbb{R}$ under addition.
     Let $G=\{1,a,b,c\}$ be a group of order $4$. If $G$ has no elements of order $4$, prove that there is a unique group table for $G$. Deduce that $G$ is abelian. This group is called the \textit{Klein four-group}.
 \end{exercise}
 
+\begin{exercise}
+    Let $G$ be a group of even order. Prove that $G$ contains an element of order $2$.
+\end{exercise}
+
 \subsection{Dihedral Groups}
 
 For each $n\in\mathbb{Z}^+$, $n\geq 3$, let $D_{2n}$ be the set of symmetries of a regular $n$-gon. A symmetry is any rigid motion of the $n$-gon which can be done by taking a copy of the polygon, moving it around in $3$-dimensional space and superimposing it on the original polygon.
@@ -262,10 +266,14 @@ is called a \textit{homomorphism}.
 The above condition is often compactly written as $$\varphi(xy)=\varphi(x)\varphi(y).$$
 
 \begin{definition}
+\label{defineFiberAndKer}
     Let $G,H$ be two groups and $\varphi:G\to H$ be a homomorphism. The \textit{kernel} of $\varphi$ is defined as follows.
     $$\operatorname{ker}(\varphi)=\{g\in G\mid \varphi(g)=1_H\}$$
-    where $1_H$ is the identity element of $H$.
+    where $1_H$ is the identity element of $H$. The \textit{fiber} of an element $h\in H$ is defined as
+    $$\varphi^{-1}(h)=\{g\in G\mid \varphi(g)=h\}.$$
 \end{definition}
+
+We see that the kernel of a homomorphism is just the fiber of the identity.
 
 \begin{definition}
 \label{isomorphismDef}

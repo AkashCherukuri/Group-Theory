@@ -1,0 +1,165 @@
+\section{Quotient Groups and Homomorphisms}
+
+\subsection{Definitions and Basics}
+In this chapter, we shall introduce the concept of a \textit{quotient group}, a way of ``dividing" a group by a subgroup.
+
+We shall see that this act of ``quotienting out" is very intimately related to the study of homomorphisms. Given a homomorphism, recall the fiber of an element \ref{defineFiberAndKer}. We see a very natural way of multiplying two fibers together by multiplying the elements the fibers correspond to. That is, given $a,b$, we define $\varphi^{-1}(a)\varphi^{-1}(b)=\varphi^{-1}(ab)$.
+
+We can think of this solely in terms of representatives of the fibers as well, and get rid of the homomorphism part of the definition as well. The resulting group of fibers can be thought of as the original group quotiented out by the kernel. That is, we send the kernel to the identity of the new group. As expected, this ``quotient group" will be isomorphic to the image of the homomorphism.
+
+\vspace{2mm}
+Although we defined the kernel of a homomorphism earlier, we shall restate the definition here.
+\begin{definition}
+    If $\varphi$ is a homomorphism $\varphi:G\to H$, the \textit{kernel} of $\varphi$ is defined as
+    $$\ker\varphi=\{g\in G\mid\varphi(g)=1\}.$$
+    Here $1$ is the identity in $H$.
+\end{definition}
+
+\begin{theorem}
+    Let $G,H$ be groups and $\varphi:G\to H$ be a homomorphism. Then
+    \begin{enumerate}
+        \item $\varphi(1_G)=1_H$, where $1_G$ and $1_H$ are the identities in $G$ and $H$ respectively.
+        \item $\varphi(g^{-1})=(\varphi(g))^{-1}$
+        \item $\varphi(g^n)=(\varphi(g))^n$ for all $n\in\mathbb{Z}$
+        \item $\ker\varphi\leq G$
+        \item $\operatorname{im}\varphi\leq H$, where $\operatorname{im}\varphi$ is the image of $G$ under $\varphi$.
+    \end{enumerate}
+\end{theorem}
+\begin{proof}
+\phantom{owo}
+\begin{enumerate}
+    \item We have $\varphi(1_G)\varphi(1_G)=\varphi(1_G)$. Multiplying by $(\varphi(1_G))^{-1}$ on either side gives the required result.
+    \item We have $\varphi(g)\varphi(g^{-1})=\varphi(gg^{-1})=\varphi(1_G)=1_H$. Premultiplying by $(\varphi(g))^{-1}$ gives the required result.
+    \item This is left as an exercise to the reader. It requires a simple induction on $n\in\mathbb{Z}^+$. (Part 2 of this theorem implies that it is true for negative $n$ as well)
+    \item Since $1_G\in\ker\varphi$, $\varphi\neq\emptyset$. If $x,y\in\ker\varphi$, $\varphi(xy^{-1})=\varphi(x)\varphi(y^{-1})=(\varphi(y))^{-1}=1_H$ so $xy^{-1}\in\ker\varphi$. Thus $\ker\varphi\leq G$.
+    \item Since $1_H\in\operatorname{im}\varphi$, $\operatorname{im}\varphi\neq\emptyset$. If $x,y\in\operatorname{im}\varphi$, that is, $x=\varphi(a)$ and $y=\varphi(b)$ for some $a,b\in G$, then $xy^{-1}=\varphi(a)(\varphi(b))^{-1}=\varphi(ab^{-1})\in\operatorname{im}\varphi$. Thus $\operatorname{im}\varphi\leq H$.
+\end{enumerate}
+\end{proof}
+
+\begin{definition}
+    Let $\varphi:G\to H$ be a homomorphism with kernel $K$. The \textit{quotient group} or \textit{factor group} $G/K$ (read $G$ \textit{mod} $K$) is a group whose elements are the fibers of $\varphi$ with multiplication defined as follows. If $X$ is the fiber above $a$ and $Y$ is the fiber above $ab$, their product is the fiber above $ab$. 
+\end{definition}
+
+\begin{definition}
+    For any $N\leq G$ and any $g\in G$, define
+    $$gN=\{gn\mid n\in N\}\text{ and }Ng=\{ng\mid n\in N\}$$
+    called a \textit{left coset} and a \textit{right coset} respectively. Any element of a coset is called a \textit{representative} for the coset.
+\end{definition}
+
+\begin{theorem}
+\label{fiberIsIndepOfRep}
+    Let $\varphi:G\to H$ be a homomorphism of groups with kernel $K$. Let $\varphi^{-1}(a)=X\in G/K$. Then for any $u\in X$, $X=uK=Ku$.
+\end{theorem}
+\begin{proof}
+    We shall prove that $X=uK$ and leave the other part as an exercise (the proof is nearly the same).
+    
+    For any $k\in K,$ $\varphi(uk)=\varphi(u)\varphi(k)=a1_H=a$ so $uk\in X$. This gives $uK\subseteq X$. Now, let $g\in X$ and $k=u^{-1}g$. Then $\varphi(k)=\varphi(u^{-1}g)=\varphi(u^{-1})\varphi(g)=a^{-1}a=1_H$ so $k\in K$. This establishes the reverse inclusion and thus $uK=X$.
+\end{proof}
+
+We shall mainly deal with left cosets, but most theorems work equally well taking right cosets instead of left cosets.
+
+\begin{theorem}
+\label{describeCosetMultiplication}
+    Let $G$ be a group and $K$ be the kernel of some homomorphism from $G$ to another group. Then the set of left cosets of $K$ in $G$ with operation defined by $$uK\cdot vK=(uv)K$$ forms a group. It is well-defined in the sense that if we take any representatives $u_1,u_2$ for $uK,vK$ respectively, $u_1u_2$ will lie in $(uv)K$.
+\end{theorem}
+\begin{proof}
+    Let $K$ be the kernel of the homomorphism $\varphi:G\to H$. Let $X=\varphi^{-1}(a)$ and $Y=\varphi^{-1}(b)$ for some $a,b\in H$. Let $u,v$ be representatives of $X$ and $Y$ so that $X=uK$ and $Y=vK$. Then
+    \begin{align*}
+        \varphi(u)\varphi(v) &= ab \\
+        \varphi(uv) &= ab \\
+        uv &\in \varphi^{-1}(ab)
+    \end{align*}
+    This gives $\varphi^{-1}(ab)=(uv)K$ (We already have $XY=\varphi^{-1}(ab)$). Thus the multiplication is well-defined.
+\end{proof}
+
+The thing to take away from this theorem is that the multiplication is \textit{independent} of the representatives chosen. Namely, the coset $(uv)K$ is independent of the representatives $u$ and $v$ chosen.
+
+When quotienting out by a kernel $K$, we usually write an element of the quotient group $uK$ as $\overline u$ and $G/K$ as $\overline G$. So the above theorem says $\overline u\,\overline v=\overline{uv}$.
+
+With quotient groups introduced, the notation for the group $\mathbb{Z}/n\mathbb{Z}$ makes perfect sense. It is just the group $\mathbb{Z}$ quotiented out by $n\mathbb{Z}$.
+
+\vspace{2mm}
+This raises another question. Can we quotient out by any subgroup of a group and have the multiplication make sense? As we will see shortly, the multiplication described makes sense \textit{if and only if} the subgroup is the kernel of some homomorphism. We shall also describe soon the criteria for a subgroup to be the kernel of some homomorphism.
+
+\begin{theorem}
+\label{cosetsPartitionsGroup}
+    Let $N$ be a subgroup of a group $G$. The set of left cosets of $N$ in $G$ partition $G$. Furthermore, for all $u,v\in G$, $uN=vN$ if and only if $v^{-1}u\in N$.
+\end{theorem}
+\begin{proof}
+    First of all, as $N\leq G$, $1\in N$. Thus $g\in gN$ for all $g\in G$, that is,
+    $$G=\bigcup_{g\in G}gN$$
+    To show that distinct left cosets have empty intersection, let $uN\cap vN\neq\emptyset$ for some $u,v\in G$. We must show that $uN=vN$. Let $x\in uN\cap vN$. Then $x=un=vm$ for some $n,m\in N$. This gives $u=v(mn^{-1})$. For any $t\in N$, $ut=v(mn^{-1}t)\in vN$ as $mn^{-1}t\in N$. Thus $uN\subseteq vN$. Similarly, we get $vN\subseteq uN$. Therefore, $uN=vN$ if they have nonempty intersection and we get that the set of left cosets partition $G$.
+    
+    By the first part of this theorem, we get $uN=vN$ if and only if $u\in vN$, that is, $u=vn$ for some $n\in N$ which is equivalent to $v^{-1}u\in N$.
+\end{proof}
+
+\begin{theorem}
+\label{cosetOperationMakesSenseIffNormal}
+    Let $N$ be a subgroup of a group $G$.
+    \begin{enumerate}
+        \item The operation on the left cosets of $N$ in $G$ given by
+        $$(uN)\cdot(vN)=(uv)N$$
+        is well defined if and only if $gng^{-1}\in N$ for all $g\in G$ and $n\in N$.
+        \item If the above operation is well-defined, it makes the set of left cosets of $N$ into a group. In particular, the identity of this group is $N$ and the inverse of $gN$ is $g^{-1}N$.
+    \end{enumerate}
+\end{theorem}
+\begin{proof}
+    \phantom{owo}
+    \begin{enumerate}
+        \item Assume first that the operation is well-defined, that is,
+        $$\text{for all }u_1,u_2\in uN\text{ and }v_1,v_2\in vN, u_1v_1N=u_2v_2N.$$
+        Setting $u_1=1,u_2=n$ and $v_1=v_2=g^{-1}$, we get
+        $g^{-1}N=ng^{-1}N$. From \ref{cosetsPartitionsGroup}, this is true if and only if $(g^{-1})^{-1}ng^{-1}\in N$, that is, $gng^{-1}\in N$.
+        
+        To prove the converse, let $u_1,u_2\in uN$ and $v_1,v_2\in vN$. We have $u_2=u_1n$ and $v_2=v_1m$ for some $n,m\in N$.
+        \begin{align*}
+            u_2v_2 &= u_1nv_1m \\
+                   &= (u_1v_1)(v_1^{-1}nv_1)m
+        \end{align*}
+        As $v_1^{-1}nv_1\in N$ and $m\in N$, $(v_1^{-1}nv_1)m=n_1\in N$. That is, $u_2v_2=(u_1v_1)n_1$ for some $n_1\in N$ and the two cosets $(u_1v_1)N$ and $(u_2v_2)N$ are not disjoint. \ref{cosetsPartitionsGroup} implies that $(u_1v_1)N=(u_2v_2)N$.
+        \item This proof is immediate once we have the operation. It is associative as $uN(vN\,wN)=(u(vw))N=((uv)w)N=(uN\,vN)wN$. The identity being equal to $N=1N$ and the inverse of $gN$ being $g^{-1}N$ are equally easy to check from the definition of multiplication.
+    \end{enumerate}
+\end{proof}
+
+Note that the above condition gets rid of the homomorphism part which we initially required while proving that the operation is well-defined.
+
+\begin{definition}
+\label{defineNormal}
+    Let $N$ be a subgroup of a group $G$. The element $gng^{-1}$ is called the \textit{conjugate} of $n\in N$ by $g$. The set $gNg^{-1}=\{gng^{-1}\mid n\in N\}$ is called the \textit{conjugate} of $N$ by $g$. The element $g$ is said to \textit{normalize} $N$ is $gNg^{-1}=N$. $N$ is called \textit{normal} if every element of $G$ normalized $N$, that is, $gNg^{-1}=N$ for all $g\in G$. If $N$ is a normal subgroup of $G$, we write $N\unlhd G$.
+\end{definition}
+
+\begin{theorem}
+\label{normalSubgroupEquivalences}
+    Let $N$ be a subgroup of the group $G$. The following are equivalent.
+    \begin{enumerate}
+        \item $N\unlhd G$.
+        \item $N_G(N)=G$. ($G$ is the normalizer of $N$ in $G$)
+        \item $gN=Ng$ for all $g\in G$.
+        \item The operation of left cosets described in \ref{describeCosetMultiplication} makes the set of left cosets into a group.
+        \item $gNg^{-1}\subseteq N$ for all $g\in G$.
+        \item $N$ is the kernel of some homomorphism.
+    \end{enumerate}
+\end{theorem}
+\begin{proof}
+    The equivalences between $1, 2$ and $3$ follow directly from the definitions. The equivalence between $4$ and $5$ was proved in \ref{cosetOperationMakesSenseIffNormal}.
+    
+    Let us prove the equivalence between $3$ and $5$. If $3$ holds, then $5$ is clearly true as $gNg^{-1}=N\subseteq N$ for all $g\in G$. If $5$ holds, we have $g^{-1}Ng\subseteq N$ for all $g\in G$, that is, $gNg^{-1}\supseteq N$. As we have inclusion (between $N$ and $gNg^{-1}$) both ways, $gNg^{-1}=N$ for all $g\in G$ and $3$ is true.
+    
+    \vspace{1mm}
+    Finally, we shall prove equivalence between $1$ and $6$. If $6$ holds, then by \ref{describeCosetMultiplication}, $4$ holds and thus $1$ holds. Conversely, if $N\unlhd G$, let $H=G/N$ and define $\pi:G\to G/N$ by $\pi(g)=gN$ for all $g\in G$. We have $\pi(g_1g_2)=(g_1g_2)N=(g_1N)(g_2N)=\pi(g_1)\pi(g_2)$. This proves $\pi$ is a homomorphism. Now
+    \begin{align*}
+        \ker\pi &= \{g\in G\mid \pi(g)=1N\} \\
+                    &= \{g\in G\mid gN=N\} \\
+                    &= \{g\in G\mid g\in N\}=N
+    \end{align*}
+    Thus $N$ is the kernel of $\pi$ and all equivalences are proved.
+\end{proof}
+
+The homomorphism constructed in the proof of the final equivalence in the above theorem is given a name.
+\begin{definition}
+    Let $N\unlhd G$. The homomorphism $\pi:G\to G/N$ defined by $\pi(g)=gN$ is called the \textit{natural projection (homomorphism)} of $G$ onto $G/N$. If $\overline H\leq G/N$ is a subgroup of $G/N$, the \textit{complete preimage} of $\overline H$ in $G$ is the preimage of $\overline H$ under the natural projection homomorphism.
+\end{definition}
+
+\textit{Note.} Readers who are familiar with category theory might recognize the word \textit{natural}, which has a more precise meaning described there.
+
+\clearpage
