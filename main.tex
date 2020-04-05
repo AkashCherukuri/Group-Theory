@@ -16,6 +16,7 @@
 \usepackage[margin=1in]{geometry}
 \usepackage[colorlinks]{hyperref}
 \usepackage{tikz}
+\usetikzlibrary{arrows}
 \usepackage{titlesec}
 
 \setlength\parindent{0pt}
@@ -55,39 +56,6 @@
     % To define a homomorphism from a group $G$ to $G'$, it is not enough to define the value of $\varphi$ at the generators of $G$, we must also ensure that the relations are satisfied. That is, if we have a relation $r=1$, where $r$ is some combination of generators, then we must also have that $\varphi (r)=1$.
     
     % Let $H\leq G$. The set of left cosets of $H$ in $G$ is in bijection with the set of right cosets of $H$ in $G$ ($x\mapsto x^{-1}$ maps each left coset to a right coset).
-    
-    % \begin{enumerate}
-    
-    % \item\textit{The First Isomorphism Theorem}: If $\varphi: G\to H$ is a homomorphism of groups, then $\ker \varphi \unlhd G$ and $G/\ker \varphi \cong \varphi(G).$
-    
-    % Corollary: $|G:\ker\varphi|=|\varphi(G)|$. $\varphi$ is injective if and only if $\ker \varphi = 1$.
-    
-    % \item\textit{The Second or Diamond Isomorphism Theorem}: Let $G$ be a group, let $H$ and $K$ be subgroups of $G$ and assume $H\leq N_{G}(K)$. Then $HK\leq G$, $K\unlhd HK$, $H\cap K\unlhd H$ and $HK/K\cong H/H\cap K$. This theorem's name can be understood from Fig. 1.
-    
-    % \begin{figure}[ht!]
-    %     \centering
-    %     \includegraphics{img/diamondIsoThm.pdf}
-    %     \caption{Diamond Isomorphism Theorem}
-    %     \label{Fig. 1}
-    % \end{figure}
-    
-    % \item\textit{The Third Isomorphism Theorem}: Let $G$ be a group and $H$ and $K$ be normal subgroups of $G$ with $H\leq K$. Then $K/H\unlhd G/H$ and $(G/H)/(K/H)\cong G/K$.
-    
-    % \textit{The Fourth or Lattice Isomorphism Theorem}: Let $G$ be a group and let $N$ be a normal subgroup of $G$. Then there is a bijection from the set of subgroups $A$ of $G$ which contain $N$ onto the set of subgroups $\overline{A}=A/N$ of $G/N$. In particular, every subgroup of $\overline{G}$ is of the form $A/N$ for some subgroup $A$ of $G$ containing $N$ (namely, its preimage in $G$ under the natural projection homomorphism from $G$ to $G/N$). This bijection has the following properties: for all $A,B\leq G$ with $N\leq A$ and $N\leq B$,
-    % \begin{enumerate}[i]
-    %     \item $A\leq B$ if and only if $\overline{A}\leq\overline{B}$,
-    %     \item if $A\leq B$, then $|B\mathrel{:}A|=|\overline{B}\mathrel{:}\overline{A}|$,
-    %     \item $\overline{\langle A, B\rangle} = \langle\overline{A}, \overline{B}\rangle$,
-    %     \item $\overline{A\cap B}=\overline{A}\cap\overline{B}$
-    %     \item $A\unlhd G$ if and only if $\overline{A}\unlhd \overline{G}$
-    % \end{enumerate}
-    % \end{enumerate}
-    
-    % If $H$ is a normal subgroup of $G$ of prime index $p$ then for all $K\leq G$, either
-    % \begin{enumerate}[i]
-    %     \item $K\leq H$ or
-    %     \item $G=HK$ and $|K:H\cap K|=p$.
-    % \end{enumerate}
     
     % In a group $G$, a sequence of subgroups $$1=N_{0} \leq N_{1} \leq N_{2} \leq\cdots\leq N_{k-1}\leq N_{k}=G$$ is called a \textit{composition series} if $N_{i} \unlhd N_{i+1}$ and $N_{i+1}/N_{i}$ is a simple group, $0\leq i\leq k-1$. If the above sequence is a composition series, the quotient groups $N_{i+1}/N_{i}$ are called \textit{composition factors} of $G$.
     

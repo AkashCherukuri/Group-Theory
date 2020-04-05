@@ -188,10 +188,12 @@ If $N\leq Z(G)$, $N\unlhd G$.
 \end{exercise}
 
 \begin{exercise}
+\label{completePreimageIsSubgroup}
     Let $\varphi:G\to H$ be a homomorphism and $E\leq H$. Prove that $\varphi^{-1}(E)\leq G$. If $E\unlhd H$, prove that $\varphi^{-1}(E)\unlhd G$.
 \end{exercise}
 
 \begin{exercise}
+\label{barGeneratorsToGetBar}
     Let $G$ be a group, $N$ be a normal subgroup of $G$ and $\overline G=G/N$. Let $S$ be a generating set of $G$, that is, $G=\langle S\rangle$. Prove that $\overline G=\langle\overline S\rangle$.
 \end{exercise}
 
@@ -332,6 +334,140 @@ In the case of finite groups, $|G:H|=\frac{|G|}{|H|}$.
     \end{enumerate}
     
     Cauchy's Theorem states that if $G$ is a finite group and $p$ is a prime dividing $|G|$, $G$ has an element of order $p$. We shall give a proof of this later in the text.
+\end{exercise}
+
+\subsection{The Isomorphism Theorems}
+
+In this section, we discuss some consequences of the relations between quotient groups and homomorphisms.
+
+\begin{theorem}[The First Isomorphism Theorem]
+\label{FirstIsoTheorem}
+    If $\varphi:G\to H$ is a homomorphism, $\ker\varphi\unlhd G$ and $G/\ker\varphi\cong\varphi(G)$.
+\end{theorem}
+\begin{proof}
+    The first part has been proved in \ref{normalSubgroupEquivalences}. Let $\ker\varphi=K$. To prove the second part, prove that the map $\phi:G/K\to\varphi(G)$ given by $\phi(X)=\varphi(g)$, where $g$ is a representative of $X\in G/K$ is well-defined and an isomorphism. This is left as an exercise to the reader.
+\end{proof}
+
+\begin{corollary}
+    Let $\varphi:G\to H$ be an homomorphism. Prove that
+    \begin{enumerate}
+        \item $\varphi$ is injective if and only if $\ker\varphi=\{1\}$.
+        \item $|G:\ker\varphi|=|\varphi(G)|$.
+    \end{enumerate}
+\end{corollary}
+\begin{proof}
+    By \ref{fiberIsIndepOfRep}, $\varphi$ is injective $\iff$ $\varphi^{-1}(a)$ is a singleton set for every $a\in H$ $\iff$ $\ker\varphi$ is a singleton set, that is, $\ker\varphi=\{1\}$.
+    
+    $2$ follows from the second part of \ref{FirstIsoTheorem}.
+\end{proof}
+
+To readers who are familiar with linear algebra, the second part of the above corollary might appear similar to the rank-nullity theorem.
+
+\begin{theorem}[The Second or Diamond Isomorphism Theorem]
+\label{SecondIsoTheorem}
+    Let $A$ and $B$ be subgroups of a group $G$ such that $A\leq N_G(B)$. Then $AB\leq G$, $B\unlhd AB$, $A\cap B\unlhd A$ and $AB/B\cong A/A\cap B$.
+\end{theorem}
+\begin{proof}
+    \ref{HKSubgroupIfKunlhdG} gives $AB\leq G$. Since $A\leq N_G(B)$ and $B\leq N_G(B)$ trivially, $AB\leq N_G(B)$, that is, $B\unlhd AB$.
+    
+    Consider the map $\varphi:A\to AB/B$ which is the restrictions of the natural projection homomorphism $\pi:AB\to AB/B$ to $A$. The identity of $AB/B$ is the coset $1B$. The kernel of $\varphi$ is $\{a\in A\mid aB=1B\}=A\cap B$. $\varphi$ is a surjection as given any coset $abB=aB\in AB/B$ for some $a\in A$ and $b\in B$, we have $\varphi(a)=abB$. Thus by \ref{FirstIsoTheorem}, $A\cap B\unlhd A$ and $A/A\cap B\unlhd AB/B$.
+\end{proof}
+
+The reason the above theorem is called the Diamond Isomorphism Theorem is hopefully clear from the following diagram.
+
+\begin{center}
+\begin{tikzpicture}[node distance=1.5cm]
+    \node (G) {$G$};
+    \node[below of=G] (AB) {$AB$};
+    \node[below right of=AB] (B) {$B$};
+    \node[below left of=AB] (A) {$A$};
+    \node[below right of=A] (AiB) {$A\cap B$};
+    \node[below of=AiB] (1) {$1$};
+    \draw (G) edge (AB)
+          (AB) edge (A)
+          (AB) edge[above right] node {$\unlhd$} (B)
+          (A) edge[below left] node {$\unlhd$} (AiB)
+          (B) edge (AiB)
+          (AiB) edge (1);
+\end{tikzpicture}
+\end{center}
+
+\begin{theorem}[The Third Isomorphism Theorem]
+\label{ThirdIsoTheorem}
+    Let $G$ be a group and let $H,K$ be normal subgroups of $G$ such that $H\leq K$. Then $(K/H)\unlhd (G/H)$ and $(G/H)/(K/H)\cong G/K$.
+\end{theorem}
+\begin{proof}
+    Let $X\in K/H, Y\in G/H$. Then we can write $X=kH$ and $Y=gH$ for some $k\in K,g\in G$. We have $YXY^{-1}=(gH)(kH)(gH)^{-1}=(gkg^{-1})H$. As $K\unlhd G$, $gkg^{-1}=k'$ for some $k'\in K$. That is, $YXY^{-1}=k'H\in K/H$. Thus $Y (K/H) Y^{-1}\subseteq (K/H)$ for any $Y\in (G/H)$. By \ref{normalSubgroupEquivalences}, $(K/H)\unlhd (G/H)$.
+    
+    \vspace{1mm}
+    Consider $\varphi:(G/H)\to (G/K)$ defined by $gH\mapsto gK$ for all $g\in G$. This is well-defined as $g_1H=g_2H\iff g_1g_2^{-1}\in H\implies g_1g_2^{-1}\in K\iff g_1K=g_2K$ for $g_1,g_2\in G$. Since $g$ can be any element of $G$, $\varphi$ is a surjective homomorphism. We have
+    \begin{align*}
+        \ker\varphi &= \{gH\in (G/H)\mid gK=K\} \\
+                    &= \{gH\in (G/H)\mid g\in K\} \\
+                    &= (K/H)
+    \end{align*}
+    Apply the first isomorphism theorem \ref{FirstIsoTheorem} to get $(G/H)/(K/H)\cong (G/K)$.
+\end{proof}
+
+\begin{theorem}[The Fourth or Lattice Isomorphism Theorem]
+\label{FourthIsoTheorem}
+    Let $N$ be a normal subgroup of group $G$. Then there is a bijection from the set of subgroups $A$ of $G$ which contain $N$ to the set of subgroups $\overline A=A/N$ of $G/N$. This bijection has the following properties. For all $A,B\leq G$ with $N\leq A$ and $N\leq B$,
+    \begin{enumerate}
+        \item $A\leq B$ if and only if $\overline A\leq\overline B$
+        \item if $A\leq B$, then $|B:A|=|\overline B:\overline A|$
+        \item $\overline{\langle A,B\rangle}=\langle\overline A,\overline B\rangle$
+        \item $\overline{A\cap B}=\overline A\cap\overline B$
+        \item $A\unlhd G$ if and only if $\overline A\unlhd\overline G$.
+    \end{enumerate}
+\end{theorem}
+\begin{proof}
+    Consider the map $\varphi$ from the set of subgroups of $G$ which contain $N$ to the set of subgroups of $(G/N)$ given by $A\mapsto A/N$. This map is clearly surjective as given any $(A/N)\in (G/N)$, $A$ maps to it. Let us now prove that $\varphi$ is injective. Suppose we have $(A/N)=(B/N)$. We wish to show that $A=B$. Let $a\in A$ and $b\in B$ such that $aN=bN$, that is, $a\in bN$. However, $N\subseteq B$ so $a\in bB=B$. This gives $A\subseteq B$. Similarly, $B\subseteq A$ and therefore, $A=B$. Thus $\varphi$ is a bijection.
+    \begin{enumerate}
+        \item If $A\leq B$, we trivially have $(A/N)\leq(B/N)$. If $(A/N)\leq(B/N)$, then given any $a\in A$, there exists $b\in B$ such that $aN=bN$, that is, $a\in bN\subseteq bB=B$. Thus $A\subseteq B$ and $A\leq B$.
+        
+        \item Consider the map $\psi$ from the set of cosets of $A$ in $B$ to the set of cosets of $\overline{A}$ in $\overline{B}$ given by $bA\mapsto bN(A/N)$. This map is injective (and well-defined) as $(b_1N)(A/N)=(b_2N)(A/N)\iff (b_1^{-1}b_2)N\in (A/N)\iff b_1^{-1}b_2\in A\iff b_1A=b_2A$.
+        
+        $\psi$ is surjective as $b$ ranges over all of $B$ in $bN(A/N)$. As $\psi$ is a bijection, we have $|B:A|=|\overline{B}:\overline{A}|$.
+        
+        \item To prove that $\overline{\langle A,B\rangle}\subseteq \langle\overline{A},\overline{B}\rangle$, we must show that given any $x\in A\cup B$, $xN\in \langle\overline{A},\overline{B}\rangle$. This is clearly true as $xN\in \overline{A}\cup\overline{B}$.
+        
+        For the reverse inclusion, if $xN\in \overline{A}\cup\overline{B}$, then $xN=gN$ for some $g\in A\cup B$, giving $x^{-1}g\in N\subseteq A\cup B$ and so $x\in A\cup B\subseteq\langle A,B\rangle$. Therefore $\overline{\langle A,B\rangle}=\langle\overline A,\overline B\rangle$.
+        
+        \item This proof is similar to that of $3$ and is left as an exercise.
+        
+        \item This was given as an exercise in \ref{completePreimageIsSubgroup} (consider the maps $\varphi$ and $\varphi^{-1}$).
+        
+    \end{enumerate}
+\end{proof}
+
+During the course of proving the isomorphism theorems, we often considered a map $\varphi$ on $G/N$ in several places in terms of the $g$ in $gN$ and proved that it is well-defined by proving that it is equal for any representative of $gN$. We are essentially defining a homomorphism $\phi$ on $G$ by specifying the value on $g$. Then this independence of $g$ is just equivalent to saying that the map is trivial on $N$, that is, $\varphi$ is well-defined on $G/N$ if and only if $N\leq\ker\phi$.
+
+In this case we say that $\phi$ factors through $N$ and $\varphi$ is the \textit{induced homomorphism} on $G/N$. This can be denoted as the following diagram which \textit{commutes}, that is, $\phi=\varphi\circ\pi$.
+\begin{center}
+\begin{tikzpicture}[->, >=stealth', node distance=2cm]
+    \node (G) {$G$};
+    \node[right of=G] (GN) {$G/N$};
+    \node[below of=GN] (H) {$H$};
+    \draw (G) edge[above] node {$\pi$} (GN)
+          (GN) edge[right] node {$\varphi$} (H)
+          (G) edge[below left] node {$\phi$} (H);
+\end{tikzpicture}
+\end{center}
+
+\begin{exercise}
+    Prove that if $H$ is a normal subgroup of group $G$ of prime index $p$, either $K\leq H$ or $G=HK$ and $|K:K\cap H|=p$.
+\end{exercise}
+
+\begin{exercise}
+    Let $M$ and $N$ be normal subgroups of $G=MN$. Prove that $(G/M\cap N)\cong (G/M)\times (G/N)$.
+\end{exercise}
+
+\begin{exercise}
+    Let $G$ be a group of order $p^a m$, where $p$ is a prime that does not divide $m$. Let $P$ be a subgroup of $G$ of order $p^a$ and $N$ a normal subgroup of $G$ of order $p^bn$, where $p$ does not divide $n$. Prove that $|P\cap N|=p^b$ and $|PN/N|=p^{a-b}$. (We shall read about these type of subgroups in detail when we discuss Sylow $p$-subgroups)
+\end{exercise}
+
+\begin{exercise}
+    A subgroup $H$ of a finite group $G$ is called a \textit{Hall subgroup} of $G$ if $(|G:H|,|H|)=1$. Prove that if $H$ is a Hall subgroup of $G$ and $N\unlhd G$, then $H\cap N$ is a Hall subgroup of $N$ and $HN/N$ is a Hall subgroup of $G/N$.
 \end{exercise}
 
 \clearpage
