@@ -1,8 +1,5 @@
 \documentclass{article}
 
-\usepackage{titlesec}
-\titleformat{\section}[block]
-  {}{\S\thesection}{0.25cm}{\Large}
 \title{Group Theory}
 \author{Amit Rajaraman}
 \date{December 2019}
@@ -17,7 +14,17 @@
 \usepackage[colorlinks]{hyperref}
 \usepackage{tikz}
 \usetikzlibrary{arrows}
+
 \usepackage{titlesec}
+\titleformat{\section}[block]{\sffamily\Large\filcenter\bfseries}{\S\thesection.}{0.25cm}{\Large}
+\titleformat{\subsection}[block]{\large\bfseries\sffamily}{\thesubsection.}{0.2cm}{\large}
+
+\usepackage{fancyhdr}
+\lhead{\sffamily{Group Theory}}
+\chead{\sffamily{\thepage}}
+\rhead{\sffamily{-Amit Rajaraman}}
+\cfoot{}
+\pagestyle{fancy}
 
 \setlength\parindent{0pt}
 
@@ -43,7 +50,10 @@
 \newtheorem*{solution}{Solution}
 
 \begin{document}
+
 \maketitle
+\thispagestyle{empty}
+
 \tableofcontents
 \clearpage
 
