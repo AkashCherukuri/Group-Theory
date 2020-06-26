@@ -321,6 +321,7 @@ In the case of finite groups, $|G:H|=\frac{|G|}{|H|}$.
 \end{exercise}
 
 \begin{exercise}
+\label{exercCauchyThm}
     This exercise presents a proof of \textit{Cauchy's Theorem}. Let $G$ be a finite group and $p$ a prime dividing $|G|$. Let $\mathcal{S}$ be as follows.
     $$\mathcal{S}=\{(x_1,x_2,\ldots,x_p)\mid x_i\in G\text{ and } x_1x_2\cdots x_p=1\}$$
     Define the relation $\sim$ on $\mathcal{S}$ by letting $\alpha\sim\beta$ if $\alpha$ is a cyclic permutation of $\beta$.
@@ -333,7 +334,7 @@ In the case of finite groups, $|G:H|=\frac{|G|}{|H|}$.
         \item Since $\{(1,1,\ldots,1)\}$ is an equivalence class of size $1$, conclude that there must be a non-identity element in $G$ of order $p$.
     \end{enumerate}
     
-    Cauchy's Theorem states that if $G$ is a finite group and $p$ is a prime dividing $|G|$, $G$ has an element of order $p$. We shall give a proof of this later in the text.
+    Cauchy's Theorem states that if $G$ is a finite group and $p$ is a prime dividing $|G|$, $G$ has an element of order $p$. We shall give another proof of this later in the text.
 \end{exercise}
 
 \subsection{The Isomorphism Theorems}
@@ -469,5 +470,36 @@ In this case we say that $\phi$ factors through $N$ and $\varphi$ is the \textit
 \begin{exercise}
     A subgroup $H$ of a finite group $G$ is called a \textit{Hall subgroup} of $G$ if $(|G:H|,|H|)=1$. Prove that if $H$ is a Hall subgroup of $G$ and $N\unlhd G$, then $H\cap N$ is a Hall subgroup of $N$ and $HN/N$ is a Hall subgroup of $G/N$.
 \end{exercise}
+
+\subsection{Composition Series}
+
+Although proving Cauchy's Theorem was given as an exercise in \ref{exercCauchyThm}, we shall prove the following (weaker) result.
+
+\begin{lemma}
+    Let $G$ be a finite abelian group and $p$ be a prime dividing $|G|$. Then $G$ contains an element of order $p$.
+\end{lemma}
+
+\begin{definition}
+    A non-trivial group $G$ is called \textit{simple} if the only normal subgroups of $G$ are $\{1\}$ and $G$.
+\end{definition}
+
+By Lagrange's Theorem, any group of prime order is simple. Also, every abelian simple group is isomorphic to $\mathbb{Z}_p$ for some prime $p$.
+
+\begin{definition}
+    Let $G$ be a group. A sequence of subgroups
+    $$\{1\}\leq N_0\leq N_1\leq N_2\leq\cdots\leq N_{k-1}\leq N_k=G$$
+    is called a \textit{composition series} if $N_i\unlhd N_{i+1}$ and $N_{i+1}/N_i$ is a simple group for each valid $i$. The quotient groups $N_{i+1}/N_i$ are then called \textit{composition factors}.
+\end{definition}
+
+\begin{theorem}[Jordan-H\"older]
+    Let $G$ be a non-trivial finite group. Then
+    \begin{enumerate}[(i)]
+        \item $G$ has a composition series and
+        \item if $\{1\}=N_0\leq N_1\leq\cdots\leq N_r=G$ and $\{1\}=M_0\leq M_1\leq\cdots\leq M_s=G$ are two composition series of $G$, then $r=s$ and there is some permutation $\pi$ of $\{1,2,\ldots,r\}$ such that
+        $M_{\pi(i)}/M_{\pi(i)-1}\cong N_i/N_{i-1}$ for each $1\leq i\leq r$.
+    \end{enumerate}
+\end{theorem}
+
+
 
 \clearpage
