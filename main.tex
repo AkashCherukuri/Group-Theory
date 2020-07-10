@@ -17,7 +17,7 @@
 
 \usepackage{titlesec}
 \titleformat{\section}[block]{\sffamily\Large\filcenter\bfseries}{\S\thesection.}{0.25cm}{\Large}
-\titleformat{\subsection}[block]{\large\bfseries\sffamily}{\thesubsection.}{0.2cm}{\large}
+\titleformat{\subsection}[block]{\large\bfseries\sffamily}{\S\S\thesubsection.}{0.2cm}{\large}
 
 \usepackage{fancyhdr}
 \lhead{\sffamily{Group Theory}}
@@ -54,12 +54,18 @@
 \maketitle
 \thispagestyle{empty}
 
+Abstract Algebra by Dummit and Foote \cite{dummyfeet} is the book primarily used as reference while making these notes.
+
 \tableofcontents
 \clearpage
 
-\input{introToGroups}
-\input{subgroups}
-\input{quotientGroupsAndHomos}
+\input{sec1introToGroups}
+\input{sec2subgroups}
+\input{sec3quotientGroupsAndHomos}
+\bibliographystyle{plain}
+\bibliography{references}
+\section*{Acknowledgements}
+    I would like to acknowledge \href{https://aryamanmaithani.github.io/}{Aryaman Maithani}'s help in pointing out errors in these notes.
     
     % Note: The converse of Lagrange's Theorem (If $k\in\mathbb{Z}^{+}$ such that $k\mid|G|$, then there exists a subgroup of $G$ of order $k$) holds if $G$ is a finite abelian group.
     
